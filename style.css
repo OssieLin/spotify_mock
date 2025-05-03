@@ -67,20 +67,51 @@ body {
 .range-wrapper {
   position: relative;
   flex-grow: 1;
+  height: 20px; /* make room for slider input */
+  display: flex;
+  align-items: center;
+}
+
+.slider-bg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   height: 4px;
+  background: #3a3a3c;
+  width: 100%;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.slider-fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 2px; /* thinner white line */
+  background: white;
+  z-index: 2;
+  border-radius: 2px;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  height: 4px;
+  height: 20px;
   background: transparent;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 3;
+  cursor: pointer;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
+  appearance: none;
   height: 0;
   width: 0;
 }
@@ -88,27 +119,6 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   height: 0;
   width: 0;
-}
-
-.slider-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background: #3a3a3c;
-  width: 100%;
-  z-index: 1;
-  border-radius: 2px;
-}
-
-.slider-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background: white;
-  z-index: 2;
-  border-radius: 2px;
 }
 
 .controls {

@@ -5,6 +5,8 @@ const currentTimeText = document.getElementById('current-time');
 const remainingTimeText = document.getElementById('remaining-time');
 const clock = document.getElementById('clock');
 const audio = document.getElementById('audio-player');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
 
 function formatTime(sec) {
   const m = Math.floor(sec / 60);
@@ -38,11 +40,17 @@ updateClock();
 playButton.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
-    playButton.textContent = '⏸';
   } else {
     audio.pause();
-    playButton.textContent = '▶';
   }
+});
+
+audio.addEventListener('play', () => {
+  playButton.innerHTML = '<i class="fas fa-pause"></i>';
+});
+
+audio.addEventListener('pause', () => {
+  playButton.innerHTML = '<i class="fas fa-play"></i>';
 });
 
 timeline.addEventListener('input', (e) => {
@@ -57,4 +65,17 @@ audio.addEventListener('loadedmetadata', () => {
   updateUI();
 });
 
+function restartSong() {
+  audio.currentTime = 0;
+  updateUI();
+  if (!audio.paused) {
+    audio.play();
+  }
+}
+
+prevButton.addEventListener('click', restartSong);
+nextButton.addEventListener('click', restartSong);
+
+// Initial UI state
 updateUI();
+playButton.innerHTML = '<i class="fas fa-play"></i>';
