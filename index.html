@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Player Mockup</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .player {
+      width: 300px;
+      padding: 20px;
+      border-radius: 20px;
+      background-color: #1e1e1e;
+    }
+    .album-art {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .info {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .artist {
+      font-size: 14px;
+      color: #b3b3b3;
+    }
+    .timeline {
+      width: 100%;
+      margin-top: 15px;
+    }
+    .timeline input[type="range"] {
+      width: 100%;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .play-button {
+      background-color: #1db954;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="player">
+    <img src="zlsh.jpg" class="album-art" alt="ZLSH" width="250" height="500"/>
+    <div class="info">
+      <div class="title">崙到我們</div>
+      <div class="artist">Osmond Lin</div>
+    </div>
+    <div class="timeline">
+      <input type="range" min="0" max="100" value="0" id="timeline" />
+    </div>
+    <div class="controls">
+      <button class="play-button" id="play">▶</button>
+    </div>
+  </div>
+
+  <script>
+    const playButton = document.getElementById('play');
+    let isPlaying = false;
+
+    playButton.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playButton.textContent = isPlaying ? '⏸' : '▶';
+    });
+
+    const timeline = document.getElementById('timeline');
+    timeline.addEventListener('input', (e) => {
+      console.log('Timeline moved to: ', e.target.value);
+      // Integrate with audio element if needed
+    });
+  </script>
+</body>
+</html>
