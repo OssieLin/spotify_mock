@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spotify Mock Player</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <audio id="audio-player" src="grad_demo.m4a"></audio>
@@ -27,9 +30,9 @@
       <div class="time-text" id="remaining-time">-4:06</div>
     </div>
     <div class="controls">
-      <div>⏮</div>
-      <div id="play-button">▶</div>
-      <div>⏭</div>
+        <div><i class="fas fa-backward"></i></div>
+        <div id="play-button"><i class="fas fa-play"></i></div>
+        <div><i class="fas fa-forward"></i></div>
     </div>
   </div>
 
