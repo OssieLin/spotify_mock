@@ -3,94 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Music Player Mockup</title>
-  <style>
-    body {
-      background-color: #121212;
-      color: white;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .player {
-      width: 300px;
-      padding: 20px;
-      border-radius: 20px;
-      background-color: #1e1e1e;
-    }
-    .album-art {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .info {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .title {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .artist {
-      font-size: 14px;
-      color: #b3b3b3;
-    }
-    .timeline {
-      width: 100%;
-      margin-top: 15px;
-    }
-    .timeline input[type="range"] {
-      width: 100%;
-    }
-    .controls {
-      display: flex;
-      justify-content: center;
-      margin-top: 15px;
-    }
-    .play-button {
-      background-color: #1db954;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Spotify Mock Player</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="audio-player" src="grad_demo.m4a"></audio>
+  <div class="date" id="date">Saturday, May 3</div>
+  <div class="clock" id="clock">--:--</div>
+
   <div class="player">
-    <img src="https://raw.githubusercontent.com/OssieLin/spotify_mock/main/zlsh.png" class="album-art" alt="ZLSH" />
     <div class="info">
+      <img src="https://raw.githubusercontent.com/OssieLin/spotify_mock/main/zlsh.png" class="album-art" alt="ZLSH" />
       <div class="title">崙到我們</div>
       <div class="artist">Osmond Lin</div>
     </div>
     <div class="timeline">
-      <input type="range" min="0" max="100" value="0" id="timeline" />
+      <div class="time-text" id="current-time">0:00</div>
+      <div class="range-wrapper">
+        <div class="slider-bg"></div>
+        <div class="slider-fill" id="slider-fill"></div>
+        <input type="range" min="0" max="246" value="0" id="timeline" />
+      </div>
+      <div class="time-text" id="remaining-time">-4:06</div>
     </div>
     <div class="controls">
-      <button class="play-button" id="play">▶</button>
+      <div>⏮</div>
+      <div id="play-button">▶</div>
+      <div>⏭</div>
     </div>
   </div>
 
-  <script>
-    const playButton = document.getElementById('play');
-    let isPlaying = false;
-
-    playButton.addEventListener('click', () => {
-      isPlaying = !isPlaying;
-      playButton.textContent = isPlaying ? '⏸' : '▶';
-    });
-
-    const timeline = document.getElementById('timeline');
-    timeline.addEventListener('input', (e) => {
-      console.log('Timeline moved to: ', e.target.value);
-      // Integrate with audio element if needed
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
